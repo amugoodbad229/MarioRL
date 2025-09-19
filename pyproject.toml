@@ -26,8 +26,6 @@ torchvision = { index = "torch-gpu" }
 
 # --- USEFUL COMMANDS ---
 
-# source .venv/bin/activate
-
 # use the below command to delete .venv and uv.lock for clean start 👇
 
 # Remove-Item -Recurse -Force .venv
