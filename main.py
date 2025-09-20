@@ -44,6 +44,7 @@ class StochasticFrameSkip(gym.Wrapper):
         self.supports_want_render = hasattr(env, "supports_want_render")
 
     # The reset method is called at the beginning of every new game/episode.
+    # **kwargs allows passing any extra arguments to the underlying environment's reset method.
     def reset(self, **kwargs):
         # We reset the current action to None because the episode is starting over.
         self.current_action = None
@@ -157,8 +158,8 @@ def main():
         policy="CnnPolicy", # 'CnnPolicy' is a Convolutional Neural Network, perfect for image-based inputs.
         env=env, # The vectorized and wrapped environment we just created.
         learning_rate=2.5e-5, # A standard, stable learning rate for PPO on Atari games.
-        n_steps=1000, # The number of steps each environment runs before a model update. (1000*12 = 12000 total steps per update).
-        batch_size=300, # The size of the data chunks used during a learning update.
+        n_steps=512, # The number of steps each environment runs before a model update. (512*12 = 6144 total steps per update).
+        batch_size=512, # The size of the data chunks used during a learning update.
         n_epochs=4, # How many times the model goes over the collected data during each update.
         gamma=0.99, # DEFAULT: The discount factor. A value close to 1 makes the agent value long-term rewards.
         gae_lambda=0.95, # DEFAULT: A parameter for the GAE algorithm, which helps estimate the advantage of actions.
@@ -180,8 +181,9 @@ def main():
     # --- Save Final Model ---
     model.save(f"{models_dir}/SMB_final") 
 
-# ==============================================================================
-# STEP 4: SCRIPT EXECUTION GUARD
-# ==============================================================================
+    # Always a good idea to clean up and close the environment when done.
+    # it is optional here as the script ends, but a good habit.
+    env.close() 
+
 if __name__ == "__main__":
     main()
