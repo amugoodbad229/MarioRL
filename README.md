@@ -34,6 +34,7 @@ Train a PPO agent to play Super Mario Bros using [Stable-Baselines3](https://git
 - uv-managed virtual environment
 - ROM import instructions
 - TensorBoard monitoring
+- Custom window using OpenCV *[Optional]*
 - Runner script to play the full game using a trained policy
 
 
