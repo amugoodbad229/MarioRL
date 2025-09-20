@@ -95,8 +95,6 @@ uv sync
 source .venv/bin/activate
 ```
 
-> After activation, all python and uv commands will use the project’s virtual environment.
-
 ---
 
 ## ROM Import
@@ -130,7 +128,7 @@ python3 randomAgent.py
 python3 -c "import torch; print(torch.cuda.is_available())"
 ```
 > [!WARNING]
-> Set `device = "cuda"` as we are dealing with images
+> Set `device = cuda"`, as we are dealing with images
 ---
 
 ## Train
@@ -150,8 +148,7 @@ After training, run the separate runner to play:
 python3 play.py
 ```
 
-> If you used observation preprocessing during training (e.g., grayscale/resize/framestack), mirror the same wrappers in play.py.  
-> On WSL, rendering requires an X server on Windows. Headless training works without rendering.
+> Use the same observation wrappers in play.py that you used in training.
 
 ---
 
@@ -194,7 +191,25 @@ python3 -m retro.import ./ROM
 # enter fg on the terminal to bring it to foreground, then press Ctrl+C
 ```
 ---
+## Acknowledgements
 
+- [Stable-Baselines3](https://github.com/DLR-RM/stable-baselines3)  
+- [stable-retro](https://stable-retro.farama.org/)  
+- [Gymnasium](https://github.com/Farama-Foundation/Gymnasium)  
+- [PyTorch](https://pytorch.org/)  
+- [TensorBoard](https://www.tensorflow.org/tensorboard)  
+- [uv](https://docs.astral.sh/uv/)  
+
+---
+
+## Support 
+
+If this repository helps you learn or prototype faster:
+- Star the repo ⭐
+- Share feedback and ideas 💡
+- Open issues for bugs or improvements 🛠️
+
+---
 ## Legal
 
 ROMs are not included and must be obtained legally. Do not commit or distribute ROMs in this repository.
