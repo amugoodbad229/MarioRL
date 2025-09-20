@@ -156,13 +156,13 @@ def main():
     model = PPO(
         policy="CnnPolicy", # 'CnnPolicy' is a Convolutional Neural Network, perfect for image-based inputs.
         env=env, # The vectorized and wrapped environment we just created.
-        learning_rate=2.5e-4, # A standard, stable learning rate for PPO on Atari games.
-        n_steps=128, # The number of steps each environment runs before a model update. (128*12 = 1536 total steps per update).
-        batch_size=256, # The size of the data chunks used during a learning update.
+        learning_rate=2.5e-5, # A standard, stable learning rate for PPO on Atari games.
+        n_steps=1000, # The number of steps each environment runs before a model update. (1000*12 = 12000 total steps per update).
+        batch_size=300, # The size of the data chunks used during a learning update.
         n_epochs=4, # How many times the model goes over the collected data during each update.
         gamma=0.99, # DEFAULT: The discount factor. A value close to 1 makes the agent value long-term rewards.
         gae_lambda=0.95, # DEFAULT: A parameter for the GAE algorithm, which helps estimate the advantage of actions.
-        clip_range=0.1, # The core of PPO. It limits how much the policy can change, ensuring stability.
+        clip_range=0.05, # The core of PPO. It limits how much the policy can change, ensuring stability.
         ent_coef=0.01, # The entropy coefficient. It encourages exploration by rewarding the agent for taking uncertain actions.
         verbose=1, # 'verbose=1' tells Stable Baselines to print out training progress to the console.
         tensorboard_log=log_dir, # Specifies the directory to save logs for TensorBoard visualization.
