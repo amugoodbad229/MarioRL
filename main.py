@@ -98,8 +98,8 @@ def main():
 
     # --- Directory Setup ---
     # Not using ./ will also works as os.makedirs() handles it
-    models_dir = "./models/PPO/" 
-    log_dir = "./tensorboard/"
+    models_dir = "./models/PPO" 
+    log_dir = "./tensorboard"
     os.makedirs(models_dir, exist_ok=True)
     os.makedirs(log_dir, exist_ok=True)
 

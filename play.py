@@ -67,7 +67,7 @@ def main():
     
     # IMPORTANT: Update this path to point to the specific model you want to test.
     # Your training script saves checkpoints (e.g., SMB_50000_steps.zip) and a final model.
-    # The 'SMB_final_10000000_steps.zip' created by the callback is often a good choice.
+    # The 'SMB_final.zip' created by the callback is often a good choice.
     MODEL_PATH = "./models/PPO/SMB_final"
 
     # --- Environment Setup Function ---
