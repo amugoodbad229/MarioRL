@@ -1,6 +1,7 @@
 # MarioRL
 
-Train a PPO agent to play Super Mario Bros using Stable-Baselines3 on stable-retro. This project targets Linux (Ubuntu 22.04 LTS on WSL is supported) and uses uv for a fast, reproducible Python environment. A single training entrypoint (main.py) is provided along with a separate runner (play.py) to play the full game with a trained policy.
+Train a PPO agent to play Super Mario Bros using [Stable-Baselines3](https://github.com/DLR-RM/stable-baselines3) on [stable-retro](https://stable-retro.farama.org/index.html#). This project targets Linux (Ubuntu 22.04 LTS on WSL) and uses [`uv`](https://docs.astral.sh/uv/guides/projects/) for a fast, reproducible Python environment. 
+> A single training entrypoint (main.py) is provided along with a separate runner (play.py) to play the full game with a trained policy.
 
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.10-blue?logo=python" />
@@ -14,6 +15,7 @@ Train a PPO agent to play Super Mario Bros using Stable-Baselines3 on stable-ret
 <p align="center">
   <a href="#overview">Overview</a> •
   <a href="#requirements">Requirements</a> •
+  <a href="#important-links">Important Links</a> •
   <a href="#quickstart-windows--wsl--vs-code">Quickstart</a> •
   <a href="#rom-import">ROM Import</a> •
   <a href="#train">Train</a> •
@@ -34,17 +36,24 @@ Train a PPO agent to play Super Mario Bros using Stable-Baselines3 on stable-ret
 - TensorBoard monitoring
 - Runner script to play the full game using a trained policy
 
-> Ubuntu 22.04 LTS includes Python 3.10 by default.
 
 ---
 
 ## Requirements
 
 - Ubuntu 22.04 LTS (native or WSL)
-- Python 3.10 (included with Ubuntu 22.04)
-- uv (install below)
-- FFmpeg
+- Python 3.10
+- uv, FFmpeg, and OpenGL
 - A legally obtained Super Mario Bros NES ROM
+
+> [!NOTE]
+> Ubuntu 22.04 LTS includes Python 3.10 by default.
+
+---
+## Important Links
+
+- The compiled understandings can be found in this [PDF](https://jumpshare.com/share/rktyYJu2MsWSoJvxOwcG)
+- All resources are available on [TLDRAW board](https://www.tldraw.com/f/T6oHe2VW4S5P4fRhE0Aqv?d=v2479.1132.1820.864.EPwSiQalDCLRnIXbqC-Kl)
 
 ---
 
@@ -70,7 +79,7 @@ sudo apt-get update -y && sudo apt-get upgrade -y
 sudo apt-get install -y git curl zlib1g-dev libssl-dev ffmpeg python3-opengl
 ```
 
-4) Install uv:
+4) Install `uv`:
 ```bash
 curl -LsSf https://astral.sh/uv/install.sh | sh
 uv --version
@@ -86,7 +95,7 @@ uv sync
 source .venv/bin/activate
 ```
 
-> After activation, all python and pip commands will use the project’s virtual environment.
+> After activation, all python and uv commands will use the project’s virtual environment.
 
 ---
 
@@ -95,7 +104,7 @@ source .venv/bin/activate
 1) Place your ROM:
 ```bash
 mkdir -p ROM
-# Copy your legally obtained Super Mario Bros .nes file into ./ROM
+# Copy your legally obtained Super Mario Bros.nes file into ./ROM
 ```
 
 2) Import into Retro’s database:
@@ -106,6 +115,23 @@ python3 -m retro.import ./ROM
 > Ensure the game name (e.g., SuperMarioBros-Nes) matches what your scripts expect.
 
 ---
+## Quick Test: Random Agent
+
+Run a quick environment sanity check:
+```bash
+python3 randomAgent.py
+```
+> [!IMPORTANT]
+> Terminate the process with `Ctrl+C`.
+
+*OPTIONAL: check CUDA availability for PyTorch*
+
+```bash
+python3 -c "import torch; print(torch.cuda.is_available())"
+```
+> [!WARNING]
+> Set `device = "cuda"` as we are dealing with images
+---
 
 ## Train
 
@@ -113,27 +139,15 @@ Run the training entrypoint:
 ```bash
 python3 main.py
 ```
-
-> Stop cleanly with Ctrl+C.  
-> If you suspended with Ctrl+Z by mistake, bring it to the foreground with:
-```bash
-fg
-```
-> Then press Ctrl+C to terminate.
-
-Optional: check CUDA availability for PyTorch:
-```bash
-python3 -c "import torch; print(torch.cuda.is_available())"
-```
-
 ---
 
 ## Play the Full Game
 
+*OPTIONAL: You can select the path file to your desired folder. For now, I have set it up for you.*
+
 After training, run the separate runner to play:
 ```bash
-python3 play.py --model runs/ppo_mario/final_model.zip \
-  --game SuperMarioBros-Nes --state Level1-1 --episodes 3 --deterministic
+python3 play.py
 ```
 
 > If you used observation preprocessing during training (e.g., grayscale/resize/framestack), mirror the same wrappers in play.py.  
@@ -168,7 +182,17 @@ uv sync
 ```bash
 python3 -m retro.import ./ROM
 ```
+> [!IMPORTANT] 
+> If `Imported 0 games` shows up, it could mean you downloaded a corrupted copy.
+ 
+- Clean stop vs suspend:
+```bash
+# Clean stop
+# Press Ctrl+C
 
+# If you pressed Ctrl+Z by mistake:
+# enter fg on the terminal to bring it to foreground, then press Ctrl+C
+```
 ---
 
 ## Legal
