@@ -1,7 +1,7 @@
 # MarioRL
 
 Train a PPO agent to play Super Mario Bros using [Stable-Baselines3](https://github.com/DLR-RM/stable-baselines3) on [stable-retro](https://stable-retro.farama.org/index.html#). This project targets Linux (Ubuntu 22.04 LTS on WSL) and uses [`uv`](https://docs.astral.sh/uv/guides/projects/) for a fast, reproducible Python environment. 
-> A single training entrypoint (main.py) is provided along with a separate runner (play.py) to play the full game with a trained policy.
+> 🎮 A single training entrypoint (main.py) is provided along with a separate runner (play.py) to play the full game with a trained policy.
 
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.10-blue?logo=python" />
@@ -29,22 +29,22 @@ Train a PPO agent to play Super Mario Bros using [Stable-Baselines3](https://git
 
 ## Overview
 
-- Stable-Baselines3 (PPO) with stable-retro
-- Linux-first workflow (Ubuntu 22.04 LTS on WSL supported)
-- uv-managed virtual environment
-- ROM import instructions
-- TensorBoard monitoring
-- Runner script to play the full game using a trained policy
+- 🧠 Stable-Baselines3 (PPO) with stable-retro
+- 🐧 Linux-first workflow (Ubuntu 22.04 LTS on WSL supported)
+- 📦 uv-managed virtual environment
+- 🎮 ROM import instructions
+- 📈 TensorBoard monitoring
+- ▶️ Runner script to play the full game using a trained policy
 
 
 ---
 
 ## Requirements
 
-- Ubuntu 22.04 LTS (native or WSL)
-- Python 3.10
-- uv, FFmpeg, and OpenGL
-- A legally obtained Super Mario Bros NES ROM
+- 🖥️ Ubuntu 22.04 LTS (native or WSL)
+- 🐍 Python 3.10
+- 🧰 uv, FFmpeg, and OpenGL
+- 🎮 A legally obtained Super Mario Bros NES ROM
 
 > [!NOTE]
 > Ubuntu 22.04 LTS includes Python 3.10 by default.
@@ -52,45 +52,45 @@ Train a PPO agent to play Super Mario Bros using [Stable-Baselines3](https://git
 ---
 ## Important Links
 
-- The compiled understandings can be found in this [PDF](https://jumpshare.com/share/rktyYJu2MsWSoJvxOwcG)
-- All resources are available on [TLDRAW board](https://www.tldraw.com/f/T6oHe2VW4S5P4fRhE0Aqv?d=v2479.1132.1820.864.EPwSiQalDCLRnIXbqC-Kl)
+- 📄 The compiled understandings can be found in this [PDF](https://jumpshare.com/share/rktyYJu2MsWSoJvxOwcG)
+- 🗺️ All resources are available on [TLDRAW board](https://www.tldraw.com/f/T6oHe2VW4S5P4fRhE0Aqv?d=v2479.1132.1820.864.EPwSiQalDCLRnIXbqC-Kl)
 
 ---
 
 ## Quickstart (Windows • WSL • VS Code)
 
-1) Install Ubuntu 22.04 (WSL):
+1) 💿 Install Ubuntu 22.04 (WSL):
 ```bash
 wsl --install --distribution Ubuntu-22.04
 ```
 
 > Open Ubuntu from the Start menu and continue in that terminal.
 
-2) Clone and open:
+2) 📁 Clone and open:
 ```bash
 git clone https://github.com/amugoodbad229/MarioRL.git
 cd MarioRL
 code .
 ```
 
-3) System dependencies:
+3) 🔧 System dependencies:
 ```bash
 sudo apt-get update -y && sudo apt-get upgrade -y
 sudo apt-get install -y git curl zlib1g-dev libssl-dev ffmpeg python3-opengl
 ```
 
-4) Install `uv`:
+4) ⚙️ Install `uv`:
 ```bash
 curl -LsSf https://astral.sh/uv/install.sh | sh
 uv --version
 ```
 
-5) Sync the environment (creates .venv and installs dependencies):
+5) 🔄 Sync the environment (creates .venv and installs dependencies):
 ```bash
 uv sync
 ```
 
-6) Activate the environment:
+6) ✅ Activate the environment:
 ```bash
 source .venv/bin/activate
 ```
@@ -99,13 +99,13 @@ source .venv/bin/activate
 
 ## ROM Import
 
-1) Place your ROM:
+1) 📂 Place your ROM:
 ```bash
 mkdir -p ROM
 # Copy your legally obtained Super Mario Bros.nes file into ./ROM
 ```
 
-2) Import into Retro’s database:
+2) 📥 Import into Retro’s database:
 ```bash
 python3 -m retro.import ./ROM
 ```
@@ -165,24 +165,24 @@ python -m tensorboard.main --logdir tensorboard
 
 ## Tips
 
-- Ensure the environment is active:
+- ✅ Ensure the environment is active:
 ```bash
 source .venv/bin/activate
 ```
 
-- Re-run sync if dependencies change:
+- ♻️ Re-run sync if dependencies change:
 ```bash
 uv sync
 ```
 
-- Re-import ROMs if not detected:
+- 🎯 Re-import ROMs if not detected:
 ```bash
 python3 -m retro.import ./ROM
 ```
 > [!IMPORTANT] 
 > If `Imported 0 games` shows up, it could mean you downloaded a corrupted copy.
  
-- Clean stop vs suspend:
+- ⌨️ Clean stop vs suspend:
 ```bash
 # Clean stop
 # Press Ctrl+C
@@ -205,11 +205,11 @@ python3 -m retro.import ./ROM
 ## Support 
 
 If this repository helps you learn or prototype faster:
-- Star the repo ⭐
-- Share feedback and ideas 💡
-- Open issues for bugs or improvements 🛠️
+- ⭐ Star the repo
+- 💡 Share feedback and ideas
+- 🛠️ Open issues for bugs or improvements
 
 ---
 ## Legal
 
-ROMs are not included and must be obtained legally. Do not commit or distribute ROMs in this repository.
+⚖️ ROMs are not included and must be obtained legally. Do not commit or distribute ROMs in this repository.
