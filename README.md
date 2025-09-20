@@ -128,7 +128,7 @@ python3 randomAgent.py
 python3 -c "import torch; print(torch.cuda.is_available())"
 ```
 > [!WARNING]
-> Set `device = cuda"`, as we are dealing with images
+> Set `device = "cuda"`, as we are dealing with images
 ---
 
 ## Train 🏋️
