@@ -74,8 +74,8 @@ def main():
     # This must be identical to your training script, with one key change for rendering.
     def make_env():
         # 1. Create the base retro environment.
-        #    KEY CHANGE: Set render_mode to 'rgb_array'. This makes the env.render() method
-        #    return the pixel data as an array, instead of opening its own window.
+        #    Set to render_mode='human' to open a window for viewing.
+        #    OPTIONAL: Set render_mode to 'rgb_array' to have more control over rendering
         env = retro.make(game=GAME_NAME, state=GAME_STATE, render_mode='rgb_array')
         
         # 2. Add the Monitor wrapper. This lets us see the final score in the terminal when Mario dies.
@@ -117,11 +117,29 @@ def main():
         # e.g., info = [{'episode': {'r': 123.0, 'l': 456, 't': 7890.0}}] --> [{key:value}]
         obs, rewards, dones, info = env.step(action)
 
-        # Render the game frame in our own controlled window.
+        # If using render_mode='human' in retro.make(), uncomment the next line to render.
+        # env.render()
+
+        # --- CUSTOM RENDERING WITH OPENCV ---
+        # --- STARTS HERE ---
+        # Render the game frame in our own controlled window. 
+        # Comment the lines below if using render_mode='human'.
         frame = env.render()
-        frame = cv2.cvtColor(frame, cv2.COLOR_RGB2BGR) # Convert color format for OpenCV
-        cv2.imshow("Super Mario Bros. - Trained Agent", frame)
+
+        # Scale the frame to make it larger and more viewable.
+        # A scale_factor of 3 or 4 usually looks good.
+        scale_factor = 4
+        width = int(frame.shape[1] * scale_factor)
+        height = int(frame.shape[0] * scale_factor)
         
+        # Use INTER_NEAREST to keep the pixelated look of the retro game.
+        frame = cv2.resize(frame, (width, height), interpolation=cv2.INTER_NEAREST)
+
+        # Convert RGB (used by gymnasium/retro) to BGR (used by OpenCV).
+        frame = cv2.cvtColor(frame, cv2.COLOR_RGB2BGR) 
+        cv2.imshow("Super Mario Bros. - Trained Agent", frame)
+        # --- ENDS HERE ---
+
         # --- ONLY RUNS ONCE PER EPISODE ---
         # If the episode is over, print the score from the Monitor wrapper and reset.
         if dones[0]:
