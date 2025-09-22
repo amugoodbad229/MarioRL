@@ -27,6 +27,18 @@ Train a PPO agent to play Super Mario Bros using [Stable-Baselines3](https://git
 
 ---
 
+## Requirements 📋
+
+- Ubuntu 22.04 LTS (native or WSL)
+- Python 3.10
+- uv, FFmpeg, and OpenGL
+- A legally obtained Super Mario Bros NES ROM
+
+> [!NOTE]
+> Ubuntu 22.04 LTS includes Python 3.10 by default.
+
+---
+
 ## Overview 🧭
 
 - Stable-Baselines3 (PPO) with stable-retro
@@ -37,18 +49,6 @@ Train a PPO agent to play Super Mario Bros using [Stable-Baselines3](https://git
 - Custom game window using OpenCV *[Optional]*
 - Runner script to play the full game using a trained policy
 
-
----
-
-## Requirements 📋
-
-- Ubuntu 22.04 LTS (native or WSL)
-- Python 3.10
-- uv, FFmpeg, and OpenGL
-- A legally obtained Super Mario Bros NES ROM
-
-> [!NOTE]
-> Ubuntu 22.04 LTS includes Python 3.10 by default.
 
 ---
 ## Important Links 🔗
