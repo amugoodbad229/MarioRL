@@ -25,6 +25,26 @@ Train a PPO agent to play Super Mario Bros using [Stable-Baselines3](https://git
   <a href="#legal">Legal</a>
 </p>
 
+
+---
+
+## Overview 🧭
+
+- Stable-Baselines3 (PPO) with stable-retro
+- Linux-first workflow (Ubuntu 22.04 LTS on WSL)
+- ROM import instructions
+- CNN Policy applied
+- TensorBoard monitoring to analyze the performance
+- Custom game window using OpenCV *[Optional]*
+- Runner script to play the full game using a trained policy
+
+
+---
+## Important Links 🔗
+
+- The compiled understandings can be found in this [PDF](https://jumpshare.com/share/rktyYJu2MsWSoJvxOwcG)
+- All resources are available on [TLDRAW board](https://www.tldraw.com/f/T6oHe2VW4S5P4fRhE0Aqv?d=v2479.1132.1820.864.EPwSiQalDCLRnIXbqC-Kl)
+
 ---
 
 ## Requirements 📋
@@ -36,25 +56,6 @@ Train a PPO agent to play Super Mario Bros using [Stable-Baselines3](https://git
 
 > [!NOTE]
 > Ubuntu 22.04 LTS includes Python 3.10 by default.
-
----
-
-## Overview 🧭
-
-- Stable-Baselines3 (PPO) with stable-retro
-- Linux-first workflow (Ubuntu 22.04 LTS on WSL supported)
-- uv-managed virtual environment
-- ROM import instructions
-- TensorBoard monitoring
-- Custom game window using OpenCV *[Optional]*
-- Runner script to play the full game using a trained policy
-
-
----
-## Important Links 🔗
-
-- The compiled understandings can be found in this [PDF](https://jumpshare.com/share/rktyYJu2MsWSoJvxOwcG)
-- All resources are available on [TLDRAW board](https://www.tldraw.com/f/T6oHe2VW4S5P4fRhE0Aqv?d=v2479.1132.1820.864.EPwSiQalDCLRnIXbqC-Kl)
 
 ---
 
